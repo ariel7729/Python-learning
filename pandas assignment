@@ -1,0 +1,41 @@
+import numpy as np
+import pandas as pd
+#Q1#
+#a#
+data=pd.read_excel("Test_Pandas.xlsx", encoding = 'utf-8-sig')
+#data=pd.read_excel("/Users/jiaqiye/Desktop/Test_Pandas.xlsx")
+data.head()
+#b#
+colums=list(data.columns.values)
+print(colums)
+#Q2#
+#a#
+count_1=data["shopid"].unique()
+print(count_1.shape)
+#b#
+#data_2=data.loc[(data["cb_option"]=1)&(data["is_preferred"]=1)]
+data_2 = data[(data["cb_option"]==1)&(data["is_preferred"]==1)]
+count_2=data_2["shopid"].unique()
+print(count_2.shape)
+#c#
+count_3=data.loc[data.loc[“sold_count”]=0,:]
+print(count_3.shape)
+#d#
+count_4=data.loc[data.loc[“item_creation_date”]=2018,:]
+print(count_4.shape)
+#Q3#
+#a#
+is_preferred = data[data["is_preferred"]==1]
+shops_id = is_preferred.sort_values(by="stock")[:3]["shopid"]
+#b#
+cb_option = data[data["cb_option"]==1]
+catagory=
+#Q4#
+revenue=data[“price”]*data[“sold_count”]
+data.eval(“revenue=price+sold_count”,inplace=True)
+data_3=data.pd.sort_values("revenue",ascending=False)
+print(data_3[0:3])
+#Q5#
+data_3=data[data["item_variation”]>3]
+count_5=data_3["itemid"].unique()
+print(count_5.shape)
